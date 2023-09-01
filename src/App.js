@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+// import { BrowserRouter, Router } from "react-router-dom";
+
+import { Routes, Route } from "react-router-dom";
+// import CreateFlashCard from "./Components/view/CreateFlashCard";
+import MyFlashCard from "./view/MyFlashCard";
+import Navbar from "./Components/Navbar";
+import FlashCardDetails from "./view/FlashCardDetails";
+import Header from "./Components/Header";
+
+import CreateFlashCard from "./view/CreateFlashCard";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className=" bg-neutral-100 h-screen "
+      style={{
+        overflowX:
+          window.location === "/flascard-details/:groupId" ? "scroll" : "hidden"
+      }}
+    >
+      <Header />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<CreateFlashCard />} />
+        <Route path="/myflashcard" element={<MyFlashCard />} />
+        <Route
+          path="/flascard-details/:groupId"
+          element={<FlashCardDetails />}
+        ></Route>
+      </Routes>
     </div>
   );
 }
-
 export default App;
